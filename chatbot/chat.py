@@ -21,7 +21,7 @@ all_words = data['all_words']
 tags = data['tags']
 model_state = data["model_state"]
 
-model = NeuralNet(input_size, hidden_size, output_size).to(device)
+
 model.load_state_dict(model_state)
 model.eval()
 
@@ -46,7 +46,6 @@ while True:
         break
 
     sentence = tokenize(sentence)
-    X = bag_of_words(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
 
